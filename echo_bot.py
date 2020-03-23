@@ -1,6 +1,13 @@
 import telebot
 
-bot = telebot.TeleBot("1110772599:AAHB9ndbH893kZsnp0_pMX3A00LmsiYRb_8")
+TOKEN = None
+
+with open("token.txt") as f:
+    TOKEN = f.read().strip()
+
+print(TOKEN)
+
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
