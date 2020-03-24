@@ -1,4 +1,7 @@
-import telebot 
+import telebot
+from telebot import types 
+import msgs
+
 
 TOKEN = None
 
@@ -9,14 +12,16 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-	bot.reply_to(message, "hi, o que vc tem interesse em jogar?")
+	bot.reply_to(message, msgs.start)
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
-	bot.reply_to(message, "/bora - invite people to play \n /games - list of games")
+	bot.reply_to(message, msgs.help)
 
-imageSelect = telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True)  # create the image selection keyboard
-imageSelect.add('Mickey', 'Minnie')
+@bot.message_handler(commands=['jogos'])
+def send_welcome(message):
+	bot.reply_to(message, msgs.jogos)
+
 
 @bot.message_handler(commands=['bora'])
 def send_welcome(message):
