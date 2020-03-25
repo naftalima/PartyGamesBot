@@ -21,10 +21,6 @@ It works thanks to [Telegram API for Python](https://github.com/eternnoir/pyTele
 $ pip3 install pyTelegramBotAPI
 ```
 
-![botPic](https://user-images.githubusercontent.com/12816073/77555316-e175d600-6e95-11ea-9592-ab11cb8d36f8.png)
-
-
-
 ## License
  
 The MIT License (MIT)
