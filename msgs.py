@@ -1,22 +1,15 @@
 import pandas as pd
 
-class Game:
+class GameInfo:
     def __init__(self,name,description,flag):
         self.name = name
-        self.description = ''
+        self.description = description
         self.flag = None
 
 df_games = pd.read_csv('data/games.csv')
+gamesList = [GameInfo(row.Name, row.Description, row.Flag) for row in df_games.itertuples()]
 
-gamesList = []
-for row in df_games.itertuples():
-    game = Game(row.Name, row.Description, row.Flag)
-    gamesList.append(game)
-
-names = []
-for i in gamesList:
-    names.append(i.name)
-
+names = [j.name for j in gamesList]
 names.sort()
 jogos = "\n".join(names)
 
