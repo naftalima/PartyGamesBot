@@ -2,7 +2,6 @@ import telebot
 from telebot import types 
 import msgs
 
-
 TOKEN = None
 
 with open("token.txt") as f:
@@ -15,16 +14,23 @@ def send_welcome(message):
 	bot.reply_to(message, msgs.start)
 
 @bot.message_handler(commands=['help'])
-def send_welcome(message):
+def send_commands(message):
 	bot.reply_to(message, msgs.help)
 
+@bot.message_handler(commands=['bora'])
+	pass
+
 @bot.message_handler(commands=['jogos'])
-def send_welcome(message):
+def send_games(message):
 	bot.reply_to(message, msgs.jogos)
 
+@bot.message_handler(commands=['meusJogos'])
+	pass
 
-@bot.message_handler(commands=['bora'])
-def send_welcome(message):
-	bot.reply_to(message, "jogar o que?")
+@bot.message_handler(commands=['editarMeusJogos'])
+	pass
+
+@bot.message_handler(commands=['SAC'])
+	pass
 
 bot.polling()

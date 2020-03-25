@@ -9,7 +9,7 @@ help = (
     '/jogos - Lorem Ipsum is simply dummy text of the printing\n'
     '/meusJogos - Lorem Ipsum is simply dummy text of the printing\n'
     '/editarMeusJogos - Lorem Ipsum is simply dummy text of the printing\n'
-    '/code - Lorem Ipsum is simply dummy text of the printing'
+    '/SAC - Lorem Ipsum is simply dummy text of the printing'
 )
 
 dict_jogos = {
