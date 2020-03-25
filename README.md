@@ -9,7 +9,7 @@ Due to the coronavirus disease outbreak (COVID-19), fear and anxiety can be over
 
 We developed this bot to encourage social interactions.
 
-**Stay home! Stay safe! ** 🏠💚
+**Stay home! Stay safe!** 🏠💚
 
 <!-- 
 [Try it](t.me/boJogarBot)
