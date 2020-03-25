@@ -9,13 +9,13 @@ with open("token.txt") as f:
 
 bot = telebot.TeleBot(TOKEN)
 
-
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
 	bot.reply_to(message, msgs.start)
 
 @bot.message_handler(commands=['help'])
 def handle_help(message):
+	bot.send_chat_action(message.chat.id, 'typing')
 	bot.reply_to(message, msgs.help)
 
 @bot.message_handler(commands=['bora'])
