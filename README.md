@@ -8,7 +8,8 @@ Telegram bot that makes it easy to invite friends to play during (and after) qua
 Due to the coronavirus disease outbreak (COVID-19), fear and anxiety can be overwhelming and cause strong emotions. We need to take care of our mental health during this chaos.
 
 We developed this bot to encourage social interactions.
-Stay home! Stay safe!  🏠💚
+
+**Stay home! Stay safe! ** 🏠💚
 
 <!-- 
 [Try it](t.me/boJogarBot)
