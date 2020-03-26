@@ -1,5 +1,6 @@
 import telebot
-from telebot import types 
+from telebot import types
+from database import Collections
 import msgs
 
 TOKEN = None
@@ -8,6 +9,7 @@ with open("token.txt") as f:
     TOKEN = f.read().strip()
 
 bot = telebot.TeleBot(TOKEN)
+collections = Collections()
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
