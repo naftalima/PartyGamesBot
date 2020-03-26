@@ -21,8 +21,22 @@ It works thanks to [Telegram API for Python](https://github.com/eternnoir/pyTele
 
 ### Getting started
 
+#### Install requirements
+
 ```
-$ pip3 install pyTelegramBotAPI
+$ pip3 install -r requirements.txt
+```
+
+#### Create token file
+
+```
+$ echo "[Telegram bot API Token]" > token.txt
+```
+
+#### Run the bot
+
+```
+$ python3 boraBot.py
 ```
 
 ## License
