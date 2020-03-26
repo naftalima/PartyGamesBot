@@ -15,9 +15,10 @@ Para começar, gostaria de me dizer seu login da steam? (envie /cancel para resp
 """
 
 help = (
-    '/bora - Lorem Ipsum is simply dummy text of the printing\n'
-    '/jogos - Lorem Ipsum is simply dummy text of the printing\n'
-    '/meusJogos - Lorem Ipsum is simply dummy text of the printing\n'
-    '/editarMeusJogos - Lorem Ipsum is simply dummy text of the printing\n'
-    '/SAC - Lorem Ipsum is simply dummy text of the printing'
+    'comandos:'
+    '/bora - convide seus amigos para jogar\n'
+    '/jogos - lista de jogos\n'
+    '/meusJogos - lista dos seus jogos\n'
+    '/editarMeusJogos - edite seus jogos\n' ## seria bom conseguie editar dentro de meus jogos
+    '/SAC'
 )
