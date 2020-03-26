@@ -19,6 +19,6 @@ help = (
     '/bora - convide seus amigos para jogar\n'
     '/jogos - lista de jogos\n'
     '/meusJogos - lista dos seus jogos\n'
-    '/editarMeusJogos - edite seus jogos\n' ## seria bom conseguie editar dentro de meus jogos
+    '/editarMeusJogos - edite seus jogos\n' ## poderia estar dentro do meus jogos
     '/SAC'
 )
