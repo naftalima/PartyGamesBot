@@ -1,14 +1,6 @@
-import pandas as pd
-from dataTypes import GameInfo
+import games
 
-df_games = pd.read_csv('data/games.csv')
-games_list = [GameInfo(row.Id, row.Name, row.Genre, row.Flag) for row in df_games.itertuples()]
-
-games_dict = {}
-for game in games_list:
-  games_dict[game.name] = game
-
-games_msg = "\n".join(sorted(games_dict.keys()))
+games_msg = "\n".join(sorted(games.all_game_names()))
 
 start_msg = """
 Olá, espero que esteja se cuidando.
@@ -27,15 +19,15 @@ comandos:
 
 cancel_steam_login_msg = """
 Ok, depois coletamos seu login na steam :)
-Para adicionar jogos na sua lista envie /editarMeusJogos
 """
 
 success_steam_login_msg = """
 Suas informações foram salvas!
-Para adicionar jogos na sua lista envie /editarMeusJogos
 """
 
 add_games_done_msg = "Ótimo, suas mudanças foram salvas. Use /meusJogos para ver sua lista de jogos."
+
+add_games_intro_msg = "Que tal nos dizer quais jogos deseja jogar? Selecione um dos jogos abaixo ou envie /done para finalizar"
 
 add_games_first_msg = "Por favor, escolha um dos jogos abaixo para adicionar a sua lista, envie /done para finalizar sua escolha"
 
