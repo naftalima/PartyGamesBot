@@ -25,9 +25,15 @@ comandos:
 /SAC
 """
 
-cancel_steam_login_msg = "Ok, depois coletamos seu login na steam :)"
+cancel_steam_login_msg = """
+Ok, depois coletamos seu login na steam :)
+Para adicionar jogos na sua lista envie /editarMeusJogos
+"""
 
-success_steam_login_msg = "Suas informações foram salvas!"
+success_steam_login_msg = """
+Suas informações foram salvas!
+Para adicionar jogos na sua lista envie /editarMeusJogos
+"""
 
 add_games_done_msg = "Ótimo, suas mudanças foram salvas. Use /meusJogos para ver sua lista de jogos."
 
