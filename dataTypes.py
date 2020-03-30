@@ -37,7 +37,8 @@ class UserInfo:
       json['scheduled_games'])
 
 class GameInfo:
-    def __init__(self, name, genre, flag):
-        self.name = name
-        self.genre = genre.split('|')
-        self.flag = flag
+  def __init__(self, id, name, genre, flag):
+    self.id = id
+    self.name = name
+    self.genre = genre.split('|')
+    self.flag = flag
