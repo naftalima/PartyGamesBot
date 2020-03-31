@@ -18,6 +18,10 @@ def handle_start(message):
   bot.send_chat_action(message.chat.id, 'typing')
   bot.send_message(message.chat.id, msgs.start_msg)
 
+  #if isn't in a group:
+  bot.send_chat_action(message.chat.id, 'typing')
+  bot.send_message(message.chat.id, msgs.steam_msg)
+  
   user_id = message.from_user.id
   username = message.from_user.username
   # setup a clean userinfo
@@ -38,7 +42,7 @@ def get_steam_name_and_save(message):
   user_games = games.from_id_to_name_list(collections.get_user_games(message.from_user.id))
   markup = create_games_markup(user_games)
   bot.send_message(message.chat.id, msgs.add_games_intro_msg, reply_markup=markup)
-  bot.register_next_step_handler(message, edit_game_list_helper, [], user_games)
+  bot.register_next_step_handler(message, add_game_list_helper, [], user_games)
 
 @bot.message_handler(commands=['help'])
 def handle_help(message):
@@ -59,18 +63,31 @@ def handle_userJogos(message):
 
 @bot.message_handler(commands=['editarMeusJogos'])
 def handle_editUserJogos(message):
+  markup = types.ReplyKeyboardMarkup(row_width=1)
+  markup.add(types.KeyboardButton('add'), types.KeyboardButton('remove'))
+  bot.send_message(message.chat.id, "editar", reply_markup=markup)
+  if 'add' in message.text:
+    bot.register_next_step_handler(message,handle_editUserJogos)
+
+
+@bot.message_handler(commands=['removeMeusJogos'])
+def handle_editUserJogos(message):
+  pass
+
+# @bot.message_handler(commands=['addMeusJogos'])
+def handle_editUserJogos(message):
   bot.send_chat_action(message.chat.id, 'typing')
   user_games = games.from_id_to_name_list(collections.get_user_games(message.from_user.id))
   markup = create_games_markup(user_games)
   bot.send_message(message.chat.id, msgs.add_games_first_msg, reply_markup=markup)
-  bot.register_next_step_handler(message, edit_game_list_helper, [], user_games)
+  bot.register_next_step_handler(message, add_game_list_helper, [], user_games)
 
 def create_games_markup(games_to_exclude):
   markup = types.ReplyKeyboardMarkup(row_width=5)
   markup.add(*[types.KeyboardButton(name) for name in games.all_game_names() if name not in games_to_exclude])
   return markup
 
-def edit_game_list_helper(message, selected_games, user_games):
+def add_game_list_helper(message, selected_games, user_games):
   bot.send_chat_action(message.chat.id, 'typing')
   if '/done' in message.text:
     markup = types.ReplyKeyboardRemove(selective=False)
@@ -87,7 +104,7 @@ def edit_game_list_helper(message, selected_games, user_games):
       selected_games.append(game_name)
       new_markup = create_games_markup(user_games+selected_games)
       bot.reply_to(message, msgs.add_games_reply_msg, reply_markup=new_markup)
-    bot.register_next_step_handler(message, edit_game_list_helper, selected_games, user_games)
+    bot.register_next_step_handler(message, add_game_list_helper, selected_games, user_games)
 
 @bot.message_handler(commands=['SAC'])
 def handle_SAC(message):
