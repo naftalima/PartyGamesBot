@@ -1,3 +1,4 @@
 pymongo==3.10.1
 pyTelegramBotAPI==3.6.7
 pandas==1.0.3
+emojize==0.5.4
