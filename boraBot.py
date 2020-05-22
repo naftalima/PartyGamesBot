@@ -28,12 +28,16 @@ def handle_new_chat_member(message):
     collections.create_group(group)
     bot.send_message(message.chat.id, msgs.group_start_msg)
 
+def remove_user_from_group(group_id, user_id):
+  collections.remove_group_member(group_id, user_id)
+  collections.remove_group_from_user_list(user_id, group_id)
+
 @bot.message_handler(content_types=["left_chat_member"])
 def handle_left_chat_member(message):
   if bot_id == message.left_chat_member.id:
     collections.delete_group(message.chat.id)
   else:
-    collections.remove_group_member(message.chat.id, message.left_chat_member.id)
+    remove_user_from_group(message.chat.id, message.left_chat_member.id)
 
 @bot.message_handler(commands=['start'], func=private_message_filter)
 def handle_start(message):
@@ -69,6 +73,7 @@ def handle_join(message):
   try:
     bot.send_message(message.from_user.id, msgs.join_private_msg.format(message.chat.title))
     collections.add_group_member(message.chat.id, message.from_user.id)
+    collections.add_new_group_to_user_list(message.from_user.id, message.chat.id)
     bot.reply_to(message, msgs.join_group_msg)
   except:
     bot.reply_to(message, msgs.join_error_msg)
@@ -76,7 +81,7 @@ def handle_join(message):
 @bot.message_handler(commands=['leave'], func=group_message_filter)
 def handle_leave(message):
   bot.send_chat_action(message.chat.id, 'typing')
-  collections.remove_group_member(message.chat.id, message.from_user.id)
+  remove_user_from_group(message.chat.id, message.from_user.id)
   bot.reply_to(message, msgs.leave_reply_msg)
 
 @bot.message_handler(commands=['help'])

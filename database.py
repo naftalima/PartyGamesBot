@@ -18,6 +18,12 @@ class Collections:
   def add_new_game_to_user_list(self, user_id, game_id_list):
     self.userCollection.update_one({'id': user_id}, {'$addToSet': {'games': {'$each': game_id_list}}})
 
+  def add_new_group_to_user_list(self, user_id, group_id):
+    self.userCollection.update_one({'id': user_id}, {'$addToSet': {'groups': group_id}})
+
+  def remove_group_from_user_list(self, user_id, group_id):
+    self.userCollection.update_one({'id': user_id}, {'$pull': {'groups': group_id}})
+
   def get_user_games(self, user_id):
     user = UserInfo.from_dict(self.userCollection.find_one({'id': user_id}))
     return user.games if user.games else []
